@@ -1,0 +1,36 @@
+
+#tasksModule {
+
+	input {
+		width: 80%;
+		padding: 5px 10px;
+	}
+
+	button#addTask {
+		width: 19%;
+		float: right;
+		padding: 5px 10px;
+	}
+
+	ul#tasks {
+		list-style: none;
+		padding-left: 0;
+		padding-top: 20px;
+
+		li {
+			width: 100%;
+			// background: tomato;
+			padding: 2px 5px;
+			font-size: 20px;
+
+			span {}
+
+			i {
+				float: right;
+				margin-right: 20px;
+				cursor: pointer;
+				
+			}
+		}
+	}
+}
