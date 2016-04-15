@@ -14,6 +14,7 @@ var tasks = (function() {
 
 		function _render() {
 			$ul.html(Mustache.render(template, {tasks: tasks}));
+			events.emit('completedTasksChanged', tasks.length);
 		}
 		
 		function addTask(value) {
