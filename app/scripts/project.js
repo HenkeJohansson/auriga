@@ -39,7 +39,7 @@ var project = (function() {
 
 	function _render() {
 		$projCont.html( Mustache.render(template, {projects: projects}) );
-		// events.emit('projectsAmount');
+		events.emit('projectsAmount', projects.length);
 	}
 
 	function addProject(value) {

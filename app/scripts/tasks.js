@@ -1,5 +1,23 @@
 var tasks = (function() {
-	var tasks = ['Lägg till ;', 'Uppdatera Permalinks'];
+	
+	var tasksModule = [
+		{
+			id: 'venus',
+			tasks: ['Lägg till ;', 'Uppdatera Permalinks']
+		},
+		{
+			id: 'jupiter',
+			tasks: ['ladda upp filen', 'spara om scriptet']
+		},
+		{
+			id: 'mars',
+			tasks: ['kolla stackoverflow', 'slit ut håret']
+		},
+		{
+			id: 'saturnus',
+			tasks: ['skit i det här', 'gå hem']
+		}
+	];
 
 	var $el = $('#tasksModule'),
 		$btn = $el.find('button#addTask'),
@@ -13,13 +31,13 @@ var tasks = (function() {
 	_render();
 
 	function _render() {
-		$ul.html(Mustache.render(template, {tasks: tasks}));
-		events.emit('completedTasksChanged', tasks.length);
+		$ul.html(Mustache.render(template, {tasks: tasksModule[0].tasks}));
+		events.emit('completedTasks', tasksModule[0].tasks.length);
 	}
 	
 	function addTask(value) {
 		var task = (typeof value === 'string') ? value : $input.val();
-		tasks.push(task);
+		tasksModule[0].tasks.push(task);
 		_render();
 		$input.val('');
 	}
@@ -32,7 +50,7 @@ var tasks = (function() {
 			var $remove = $(event.target).closest('li');
 			i = $ul.find('li').index($remove);
 		}
-		tasks.splice(i, 1);
+		tasksModule[0].tasks.splice(i, 1);
 		_render();
 	}
 

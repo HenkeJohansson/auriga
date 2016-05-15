@@ -1,4 +1,13 @@
 
+a {
+	color: black;
+
+	&:hover {
+		text-decoration: none;
+		color: black;
+	}
+}
+
 div.jumbotron {
 	border-radius: none !important;
 }
