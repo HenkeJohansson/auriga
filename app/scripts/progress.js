@@ -19,6 +19,17 @@ var progress = (function() {
 		_render();
 	}
 
+	function percentProgress(newTasks) {
+		progressPercent = precentDone(newTasks);
+		_render();
+	}
+
+	function percentDone(num) {
+		var percentToGo = (num/totalTasks) * 100;
+		precentToGo = Math.floor(percentToGo);
+		_render();
+	}
+
 	function destroy() {
 		$progress.remove();
 		events.off('completedTasksChanged', updateProgress);

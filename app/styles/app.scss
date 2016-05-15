@@ -1,4 +1,56 @@
 
+div.jumbotron {
+	border-radius: none !important;
+}
+
+div {
+
+	&.blue {
+		background: linear-gradient(#0074D9, #4192D9);
+	}
+	&.purple {
+		background: linear-gradient(#36175E, #553285);
+	}
+	&.red {
+		background: linear-gradient(#E53629, #E84E3D);
+	}
+	&.orange {
+		background: linear-gradient(#FF5800, #FF9F00);
+	}
+	&.yellow {
+		background: linear-gradient(#FFBE00, #FFDC00);
+	}
+	&.green {
+		background: linear-gradient(#1AA261, #54BE68);
+	}
+}
+
+#projectsModule {
+
+	input {
+		width: 80%;
+		padding: 5px 10px;
+	}
+
+	button#addProject {
+		width: 19%;
+		float: right;
+		padding: 5px 10px;
+	}
+
+	div#projects-container {
+
+		div.project {
+			padding: 20px;
+
+			h3 {
+				text-align: center;
+				text-transform: uppercase;
+			}
+		}
+	}
+}
+
 #tasksModule {
 
 	input {

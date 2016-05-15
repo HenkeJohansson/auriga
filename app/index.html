@@ -29,44 +29,52 @@
 	<![endif]-->
 	
 	<div class="container">
-		<div class="header">
-			<ul class="nav nav-pills pull-right">
-				<li class="active"><a href="#">Home</a></li>
-				<li><a href="#">About</a></li>
-				<li><a href="#">Contact</a></li>
-			</ul>
-		<h3 class="text-muted">auriga</h3>
-	  </div>
 
-	<div class="jumbotron">
-		<h1>Do this shit!</h1>
-		<p class="lead">Noooooow mutherfucker!</p>
-		<div id="progressModule">
-			<div class="col-xs-10 col-xs-offset-1">
-				<script id="progress-template" type="text/template">
-					<div id="" class="col-xs-10 col-xs-offset-1">
-					{{tasks}}
-					</div><!-- #progress-module -->
+		<div class="jumbotron orange">
+			<h1>Do this shit!</h1>
+			<p class="lead">Noooooow mutherfucker!</p>
+			<div id="progressModule">
+				<div class="col-xs-10 col-xs-offset-1">
+					<script id="progress-template" type="text/template">
+						<div id="" class="col-xs-10 col-xs-offset-1">
+						{{tasks}}
+						</div><!-- #progress-module -->
+					</script>
+				</div><!-- .col-xs-10 -->
+			</div><!-- #progress-module -->
+		</div>
+
+		<div id="projectsModule">
+			<h1>Projects</h1>
+			<input placeholder="Projektnamn" type="text">
+			<button id="addProject">Lägg till projekt</button>
+			<div id="projects-container">
+				<script id="projects-template" type="text/template">
+					{{#projects}}
+						<div id="{{id}}" class="project {{color}}">
+							<h3>{{name}}</h3>
+							<p>{{status}}</p>
+						</div>
+					{{/projects}}
 				</script>
-			</div><!-- .col-xs-10 -->
-		</div><!-- #progress-module -->
-	</div>
+			</div>
+		</div><!-- #projectsModule -->
 
-	<div id="tasksModule">
-		<h1>Tasks</h1>
-		<input placeholder="Uppgift" type="text">
-		<button id="addTask">Lägg till uppgift</button>
-		<ul id="tasks">
-			<script id="tasks-template" type="text/template">
-				{{#tasks}}
-					<li>
-						<span>{{.}}</span>
-						<i class="del">✖</i>
-					</li>
-				{{/tasks}}
-			</script>
-		</ul>
-	</div><!-- #taskModule -->
+		<div id="tasksModule">
+			<h1>Tasks</h1>
+			<input placeholder="Uppgift" type="text">
+			<button id="addTask">Lägg till uppgift</button>
+			<ul id="tasks">
+				<script id="tasks-template" type="text/template">
+					{{#tasks}}
+						<li>
+							<span>{{.}}</span>
+							<i class="del">✖</i>
+						</li>
+					{{/tasks}}
+				</script>
+			</ul>
+		</div><!-- #taskModule -->
 
 	  
 
@@ -74,16 +82,6 @@
 			<p>♥ from the Yeoman team</p>
 		</div>
 	</div>
-	
-	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-	<script>
-	  (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-	  function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-	  e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-	  e.src='https://www.google-analytics.com/analytics.js';
-	  r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-	  ga('create','UA-XXXXX-X');ga('send','pageview');
-	</script>
 
 	<!-- build:js scripts/vendor.js -->
 	<!-- bower:js -->
@@ -109,6 +107,7 @@
 	
 	<!-- build:js scripts/main.js -->
 	<script src="scripts/pubsub.js"></script>
+	<script src="scripts/project.js"></script>
 	<script src="scripts/progress.js"></script>
 	<script src="scripts/tasks.js"></script>
 	<!-- endbuild -->
