@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" lang="sv">
   <head>
 	<meta charset="utf-8">
 	<meta name="description" content="">
@@ -37,7 +37,7 @@
 				<div class="col-xs-10 col-xs-offset-1">
 					<script id="progressTasks-template" type="text/template">
 						<div id="" class="col-xs-10 col-xs-offset-1">
-						{{tasks}}
+						{{proj.project.tasksList}}
 						</div><!-- #progress-module -->
 					</script>
 				</div><!-- .col-xs-10 -->
@@ -50,12 +50,12 @@
 			<button id="addTask">Lägg till uppgift</button>
 			<ul id="tasks">
 				<script id="tasks-template" type="text/template">
-					{{#tasks}}
+					{{#proj.project.tasksList}}
 						<li>
 							<span>{{.}}</span>
 							<i class="del">✖</i>
 						</li>
-					{{/tasks}}
+					{{/proj.project.tasksList}}
 				</script>
 			</ul>
 		</div><!-- #taskModule -->
@@ -91,7 +91,7 @@
 	
 	<!-- build:js scripts/main.js -->
 	<script src="scripts/pubsub.js"></script>
-	<script src="scripts/progressProjects.js"></script>
+	<script src="scripts/progressTasks.js"></script>
 	<script src="scripts/tasks.js"></script>
 	<!-- <script src="scripts/project.js"></script>
 	<script src="scripts/progressTasks.js"></script> -->

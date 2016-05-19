@@ -1,21 +1,33 @@
-var tasks = (function() {
+var tasksModule = (function() {
 	
-	var tasksModule = [
+	var projects = [
 		{
+			name: 'Venus',
 			id: 'venus',
-			tasks: ['Lägg till ;', 'Uppdatera Permalinks']
+			status: 'backlog',
+			color: 'blue',
+			tasksList: ['Lägg till ;', 'Uppdatera Permalinks']
 		},
 		{
+			name: 'Jupiter',
 			id: 'jupiter',
-			tasks: ['ladda upp filen', 'spara om scriptet']
+			status: 'backlog',
+			color: 'red',
+			tasksList: ['ladda upp filen', 'spara om scriptet']
 		},
 		{
+			name: 'Mars',
 			id: 'mars',
-			tasks: ['kolla stackoverflow', 'slit ut håret']
+			status: 'backlog',
+			color: 'green',
+			tasksList: ['kolla stackoverflow', 'slit ut håret']
 		},
 		{
+			name: 'Saturnus',
 			id: 'saturnus',
-			tasks: ['skit i det här', 'gå hem']
+			status: 'backlog',
+			color: 'yellow',
+			tasksList: ['skit i det här', 'gå hem']
 		}
 	];
 
@@ -28,16 +40,20 @@ var tasks = (function() {
 	$btn.on('click', addTask);
 	$ul.delegate('i.del', 'click', deleteTask);
 
-	_render();
+	_render(getUrlParam);
 
-	function _render() {
-		$ul.html(Mustache.render(template, {tasks: tasksModule[0].tasks}));
-		events.emit('completedTasks', tasksModule[0].tasks.length);
+	function _render(getUrlParam) {
+		var currProj = getUrlParam();
+		console.log('_render', currProj);
+		// $ul.html(Mustache.render(template, {tasks: tasks[0].tasksList}));
+		// events.emit('completedTasks', tasks[0].tasksList.length);
+		$ul.html(Mustache.render(template, {proj: currProj}));
+		events.emit('completedTasks', currProj.task.length);
 	}
 	
 	function addTask(value) {
 		var task = (typeof value === 'string') ? value : $input.val();
-		tasksModule[0].tasks.push(task);
+		projects[0].tasksList.push(task);
 		_render();
 		$input.val('');
 	}
@@ -50,8 +66,24 @@ var tasks = (function() {
 			var $remove = $(event.target).closest('li');
 			i = $ul.find('li').index($remove);
 		}
-		tasksModule[0].tasks.splice(i, 1);
+		projects[0].tasksList.splice(i, 1);
 		_render();
+	}
+
+	function getUrlParam() {
+		var currProj = {},
+			sPageUrl = window.location.search.substring(1);
+			
+		currProj.sProjId = sPageUrl.substring(sPageUrl.length, 7);
+
+		for ( var i = 0; i < projects.length; i++ ) {
+			if ( currProj.sProjId === projects[i].id ) {
+				currProj.project = projects[i];
+				// return taskId;
+			}
+		}
+
+		return currProj;
 	}
 
 	return {

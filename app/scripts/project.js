@@ -1,28 +1,33 @@
 var project = (function() {
+	
 	var projects = [
 		{
 			name: 'Venus',
 			id: 'venus',
 			status: 'backlog',
-			color: 'blue'
+			color: 'blue',
+			tasks: ['Lägg till ;', 'Uppdatera Permalinks']
 		},
 		{
 			name: 'Jupiter',
 			id: 'jupiter',
 			status: 'backlog',
-			color: 'red'
+			color: 'red',
+			tasks: ['ladda upp filen', 'spara om scriptet']
 		},
 		{
 			name: 'Mars',
 			id: 'mars',
 			status: 'backlog',
-			color: 'green'
+			color: 'green',
+			tasks: ['kolla stackoverflow', 'slit ut håret']
 		},
 		{
 			name: 'Saturnus',
 			id: 'saturnus',
 			status: 'backlog',
-			color: 'yellow'
+			color: 'yellow',
+			tasks: ['skit i det här', 'gå hem']
 		}
 	];
 
